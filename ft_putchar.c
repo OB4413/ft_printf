@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 11:02:53 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/23 13:12:01 by obarais          ###   ########.fr       */
+/*   Created: 2024/11/23 11:39:17 by obarais           #+#    #+#             */
+/*   Updated: 2024/11/23 13:22:19 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+int ft_putchar(char c)
+{
+    int i;
 
-int ft_printf(const char *Format, ...);
-int ft_putchar(char c);
-int ft_putstr(char *s);
-int ft_putnbr(int n);
-
-#endif
+	i = write(1, &c, 1);
+    return (i);
+}

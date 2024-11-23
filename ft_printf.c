@@ -6,45 +6,46 @@
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 09:30:03 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/23 12:06:19 by obarais          ###   ########.fr       */
+/*   Updated: 2024/11/23 15:05:02 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putchar(char c)
+int ft_print_lst(va_list lst, const char *Format, int *i)
 {
-    int i;
+    int res;
 
-	i = write(1, &c, 1);
-    return (i);
+    res = 0;
+    if(Format[*i] == 'c')
+        res += ft_putchar(va_arg(lst, int));
+    else if(Format[*i] == 's')
+        res += ft_putstr(va_arg(lst, char *));
+    else if(Format[*i] == 'd' || Format[*i] == 'i')
+        res += ft_putnbr(va_arg(lst, int));
+    return (res);
 }
+
 int ft_printf(const char *Format, ...)
 {
     int i;
+    int res;
     va_list lst;
 
+    i = 0;
+    res = 0;
     va_start(lst, Format);
-    if (!Format)
+    if (Format == NULL)
         return (-1);
     while (Format[i])
     {
         if (Format[i] == '%')
         {
             i++;
-            if (Format[i] == 'c')
-            {
-                char c = va_arg(lst, char);
-                i = ft_putchar(c);
-                break;
-            }
+            res += ft_print_lst(lst, Format, &i);
         }
         i++;
     }
     va_end(lst);
-    return (i);
-}
-int main()
-{
-    int i = ft_printf("%c", 'h');
+    return (res);
 }

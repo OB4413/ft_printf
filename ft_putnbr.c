@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 11:02:53 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/23 13:12:01 by obarais          ###   ########.fr       */
+/*   Created: 2024/11/23 13:06:21 by obarais           #+#    #+#             */
+/*   Updated: 2024/11/23 13:11:47 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+int ft_putnbr(int n)
+{
+	int	res;
 
-int ft_printf(const char *Format, ...);
-int ft_putchar(char c);
-int ft_putstr(char *s);
-int ft_putnbr(int n);
-
-#endif
+	res = 0;
+	if (n == -2147483648)
+	{
+		res = res + ft_putstr("-2147483648");
+	}
+	else if (n < 0)
+	{
+		res = res + ft_putchar('-');
+		res = res + ft_putnbr(n * -1);
+	}
+	else if (n > 9)
+	{
+		res = res + ft_putnbr(n / 10);
+		res = res + ft_putnbr(n % 10);
+	}
+	else
+		res = res + ft_putchar(n + '0');
+	return (res);
+}
