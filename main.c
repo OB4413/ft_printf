@@ -2,6 +2,5 @@
 
 int main()
 {
-    printf("%d\n", printf("%d %d", 10000, 100));
-    printf("%d\n", ft_printf("%d %d", 10000, 100));
+    ft_printf("%x", 1000);
 }
