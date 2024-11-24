@@ -6,7 +6,7 @@
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 09:30:03 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/24 18:20:16 by obarais          ###   ########.fr       */
+/*   Updated: 2024/11/24 21:27:52 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	ft_print_lst(va_list lst, char Format)
 		res += ft_putnbr(va_arg(lst, int));
 	else if (Format == 'x')
 		res += ft_hexalower(va_arg(lst, long));
+	else if (Format == 'X')
+		res += ft_hexaupper(va_arg(lst, long));
 	return (res);
 }
 

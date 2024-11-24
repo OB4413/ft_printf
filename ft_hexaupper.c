@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_hexaupper.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 11:02:53 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/24 21:32:43 by obarais          ###   ########.fr       */
+/*   Created: 2024/11/24 21:20:32 by obarais           #+#    #+#             */
+/*   Updated: 2024/11/24 21:35:30 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-int ft_printf(const char *Format, ...);
-int ft_putchar(char c);
-int ft_putstr(char *s);
-int ft_putnbr(int n);
-int ft_hexalower(long nb);
-int ft_hexaupper(long nb);
-
-#endif
+int ft_hexaupper(long nb)
+{
+    int res;
+    char h[17] = "0123456789ABCDEF";
+    
+    res = 0;
+    if (nb > 16)
+    {
+        res = res + ft_hexaupper(nb / 16);
+        res = res + ft_hexaupper(nb % 16);
+    }
+    else
+        res = res + ft_putchar(h[nb]);
+    return (res);
+}
