@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_unsigned_decimal.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 13:06:21 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/25 10:17:23 by obarais          ###   ########.fr       */
+/*   Created: 2024/11/25 09:39:54 by obarais           #+#    #+#             */
+/*   Updated: 2024/11/25 10:38:44 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+int	ft_unsigned_decimal(unsigned int nb)
 {
 	int	res;
 
 	res = 0;
-	if (n == -2147483648)
+	if (nb > 9)
 	{
-		res = res + ft_putstr("-2147483648");
-	}
-	else if (n < 0)
-	{
-		res = res + ft_putchar('-');
-		res = res + ft_putnbr(n * -1);
-	}
-	else if (n > 9)
-	{
-		res = res + ft_putnbr(n / 10);
-		res = res + ft_putnbr(n % 10);
+		res += ft_putnbr(nb / 10);
+		res += ft_putnbr(nb % 10);
 	}
 	else
-		res = res + ft_putchar(n + '0');
+		res += ft_putchar(nb + '0');
 	return (res);
 }

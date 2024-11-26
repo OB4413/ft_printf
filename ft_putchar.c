@@ -6,16 +6,16 @@
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:39:17 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/23 13:22:19 by obarais          ###   ########.fr       */
+/*   Updated: 2024/11/25 17:42:54 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putchar(char c)
+int	ft_putchar(char c)
 {
-    int i;
+	int	i;
 
 	i = write(1, &c, 1);
-    return (i);
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 09:30:03 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/24 21:27:52 by obarais          ###   ########.fr       */
+/*   Updated: 2024/11/25 18:17:52 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,18 @@ int	ft_print_lst(va_list lst, char Format)
 		res += ft_putchar(va_arg(lst, int));
 	else if (Format == 's')
 		res += ft_putstr(va_arg(lst, char *));
+	else if (Format == 'p')
+		res += ft_addressp(va_arg(lst, unsigned long));
 	else if (Format == 'd' || Format == 'i')
 		res += ft_putnbr(va_arg(lst, int));
+	else if (Format == 'u')
+		res += ft_unsigned_decimal(va_arg(lst, unsigned int));
 	else if (Format == 'x')
-		res += ft_hexalower(va_arg(lst, long));
+		res += ft_hexalower(va_arg(lst, unsigned int));
 	else if (Format == 'X')
-		res += ft_hexaupper(va_arg(lst, long));
+		res += ft_hexaupper(va_arg(lst, unsigned int));
+	else if (Format == '%')
+		res += ft_putchar(Format);
 	return (res);
 }
 
@@ -39,17 +45,17 @@ int	ft_printf(const char *Format, ...)
 	i = 0;
 	res = 0;
 	va_start(lst, Format);
-	if (Format == NULL)
+	if (Format == NULL || write(1, 0, 0) == -1)
+	{
+		va_end(lst);
 		return (-1);
+	}
 	while (Format[i])
 	{
 		if (Format[i] == '%')
 		{
 			i++;
-			if (Format[i] == '%')
-				res += ft_putchar(Format[i]);
-			else
-				res += ft_print_lst(lst, Format[i]);
+			res += ft_print_lst(lst, Format[i]);
 		}
 		else if (Format[i] != '%')
 			res += ft_putchar(Format[i]);

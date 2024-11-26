@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_addressp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 13:06:21 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/25 10:17:23 by obarais          ###   ########.fr       */
+/*   Created: 2024/11/25 11:27:05 by obarais           #+#    #+#             */
+/*   Updated: 2024/11/25 17:35:04 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+static int	ft_hexalow(unsigned long nb)
+{
+	int		res;
+	char	*h;
+
+	h = "0123456789abcdef";
+	res = 0;
+	if (nb >= 16)
+	{
+		res += ft_hexalow(nb / 16);
+		res += ft_hexalow(nb % 16);
+	}
+	else
+		res += ft_putchar(h[nb]);
+	return (res);
+}
+
+int	ft_addressp(unsigned long nb)
 {
 	int	res;
 
 	res = 0;
-	if (n == -2147483648)
-	{
-		res = res + ft_putstr("-2147483648");
-	}
-	else if (n < 0)
-	{
-		res = res + ft_putchar('-');
-		res = res + ft_putnbr(n * -1);
-	}
-	else if (n > 9)
-	{
-		res = res + ft_putnbr(n / 10);
-		res = res + ft_putnbr(n % 10);
-	}
-	else
-		res = res + ft_putchar(n + '0');
+	res += ft_putstr("0x");
+	res += ft_hexalow(nb);
 	return (res);
 }
