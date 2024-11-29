@@ -6,7 +6,7 @@
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:02:53 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/25 17:34:11 by obarais          ###   ########.fr       */
+/*   Updated: 2024/11/29 09:05:13 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
 
 int	ft_printf(const char *Format, ...);
 int	ft_putchar(char c);
