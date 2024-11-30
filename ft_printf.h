@@ -6,7 +6,7 @@
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:02:53 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/29 09:05:13 by obarais          ###   ########.fr       */
+/*   Updated: 2024/11/30 09:30:26 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
 
 int	ft_printf(const char *Format, ...);
 int	ft_putchar(char c);

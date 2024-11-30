@@ -6,7 +6,7 @@
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 09:30:03 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/28 14:43:41 by obarais          ###   ########.fr       */
+/*   Updated: 2024/11/30 10:02:41 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_printf(const char *Format, ...)
 	i = 0;
 	res = 0;
 	va_start(lst, Format);
-	if (Format == NULL || write(1, 0, 0) == -1)
+	if (Format == NULL)
 	{
 		va_end(lst);
 		return (-1);
