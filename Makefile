@@ -15,13 +15,13 @@ $(NAME): $(OBJECTS)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	rm -f $(OBJECTS) $(BOBJECTS)
+	rm -f $(OBJECTS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.SECONDARY: $(OBJECTS) $(BOBJECTS)
+.SECONDARY: $(OBJECTS)
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

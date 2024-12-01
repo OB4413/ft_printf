@@ -6,7 +6,7 @@
 /*   By: obarais <obarais@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 13:06:21 by obarais           #+#    #+#             */
-/*   Updated: 2024/11/25 10:17:23 by obarais          ###   ########.fr       */
+/*   Updated: 2024/12/01 15:28:35 by obarais          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_putnbr(int n)
 	else if (n < 0)
 	{
 		res = res + ft_putchar('-');
-		res = res + ft_putnbr(n * -1);
+		res = res + ft_putnbr(n * (-1));
 	}
 	else if (n > 9)
 	{
