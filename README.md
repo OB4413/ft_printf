@@ -1,49 +1,64 @@
-# 📟 ft_printf
+# 🖨️ ft_printf
 
-> A custom implementation of the standard C `printf` function. Built as part of the 1337 School core curriculum.
+> A custom implementation of the `printf` function in C. Project for 1337 curriculum.
 
 ## 📌 Description
 
-The **ft_printf** project replicates the behavior of the standard C `printf` function, handling formatted output for different data types. The goal is to understand variadic functions and format string parsing without using the original `printf`.
+The **ft_printf** project consists of recreating the standard C library function `printf`. It supports conversion specifiers, flags, width, precision, and length modifiers to format and print data to standard output.
 
-## ✅ Supported Conversions
+## ⚙️ Function Prototype
 
-| Specifier | Description             |
-|----------:|-------------------------|
-| `%c`      | Character               |
-| `%s`      | String                  |
-| `%p`      | Pointer address         |
-| `%d`      | Signed decimal integer  |
-| `%i`      | Signed decimal integer  |
-| `%u`      | Unsigned decimal        |
-| `%x`      | Lowercase hexadecimal   |
-| `%X`      | Uppercase hexadecimal   |
-| `%%`      | Print a literal `%`     |
+```c
+int ft_printf(const char *format, ...);
+```
 
-## 🧠 What I Learned
+- Returns the number of characters printed (excluding the null byte).
+- Supports the following conversion specifiers:  
+  `%c`, `%s`, `%p`, `%d`, `%i`, `%u`, `%x`, `%X`, `%%`.
 
-- Variadic functions using `stdarg.h`
-- Manual parsing of format strings
-- Type casting and handling edge cases
-- Creating modular and reusable utility functions
+## 📁 File Structure
 
-## 🗂️ Project Structure
+```
+ft_printf/
+├── ft_printf.c
+├── ft_printf_utils.c
+├── ft_printf.h
+├── main.c          # For testing (optional)
+├── Makefile
+└── README.md
+```
 
-
-## 🚀 How to Use
+## 🧪 Usage Example
 
 ```c
 #include "ft_printf.h"
 
 int main(void)
 {
-    ft_printf("Hello %s, the number is %d\n", "world", 42);
-    return (0);
+    int count;
+
+    count = ft_printf("Hello %s! Number: %d\n", "world", 42);
+    ft_printf("Printed %d characters.\n", count);
+    return 0;
 }
+```
+
+## 🔧 Compilation
+
+```bash
 make
-gcc -Wall -Wextra -Werror main.c libftprintf.a
-ft_printf("Char: %c\n", 'A');
-ft_printf("String: %s\n", "1337");
-ft_printf("Pointer: %p\n", ptr);
-ft_printf("Decimal: %d\n", 1234);
-ft_printf("Hex: %x\n", 255);
+gcc -Wall -Wextra -Werror ft_printf.c ft_printf_utils.c main.c
+./a.out
+```
+
+## ✅ Features
+
+- Supports multiple conversion specifiers.
+- Handles flags like `-`, `0`, `.` (precision), and width.
+- Prints formatted output to standard output.
+- Memory-safe, with no leaks.
+- Norm-compliant for 1337.
+
+## 👨‍💻 Author
+
+- GitHub: [OB4413](https://github.com/OB4413)
